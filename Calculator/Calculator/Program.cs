@@ -4,91 +4,110 @@ namespace Calulator
 {
     class Program
     {
-        delegate int MathOp(int _num1, int _num2);
+        delegate double MathOp(double _num1, double _num2);
         static void Main(string[] args)
         {
             MathOp mathOp;
-            int num1, num2;
-
-            start:
-
-            Console.WriteLine("Skriv in två tal.");
-
-            Console.Write("Tal1: ");
-            num1 = Int32.Parse(Console.ReadLine());
-
-            Console.Write("Tal2: ");
-            num2 = Int32.Parse(Console.ReadLine());
-            Convert.ToInt32("18");
-
-            Console.Write("Välj operation 1=Addera, 2=Subtrahera, 3=Multiplicera, 4=Dividera, 5=xor: ");
-
-            switch (Console.ReadLine())
+            double num1, num2;
+            string inmatning;
+            while (true)
             {
-                case "1":
-                    mathOp = Add;
-                    break;
-                case "+":
-                    mathOp = Add;
-                    break;
-                case "2":
-                    mathOp = Subtract;
-                    break;
-                case "-":
-                    mathOp = Subtract;
-                    break;
-                case "3":
-                    mathOp = Multiplicate;
-                    break;
-                case "*":
-                    mathOp = Multiplicate;
-                    break;
-                case "4":
-                    mathOp = Divide;
-                    break;
-                case "/":
-                    mathOp = Divide;
-                    break;
-                case "5":
-                    mathOp = Xor;
-                    break;
-                case "^":
-                    mathOp = Xor;
-                    break;
-                default:
-                    mathOp = Add;
-                    break;
-            }
 
-            Console.WriteLine("Det blir: {0}", mathOp(num1, num2));
-            Console.Write("Skriv \"igen\" för att starta om: ");
-            if (Console.ReadLine() == "igen") goto start;
+                Console.WriteLine("Skriv in två tal. A för att avbryta.");
+
+            choose1:
+                Console.Write("Tal 1: ");
+                inmatning = Console.ReadLine();
+                inmatning = inmatning.ToLower();
+                if (!Double.TryParse(inmatning, out num1))
+                {
+                    if (String.Compare(inmatning, "a") == 0) break;
+                    else
+                    {
+                        Console.WriteLine("Felaktig inmatning, försök igen.");
+                        goto choose1;
+                    }
+                }
+
+            choose2:
+                Console.Write("Tal 2: ");
+                inmatning = Console.ReadLine();
+                if (!Double.TryParse(inmatning, out num2))
+                {
+                    if (String.Compare(inmatning, "a") == 0) break;
+                    else
+                    {
+                        Console.WriteLine("Felaktig inmatning, försök igen.");
+                        goto choose2;
+                    }
+                }
+
+                Console.Write("\t1=Addera\n \t2=Subtrahera\n \t3=Multiplicera\n \t4=Dividera\n \t5=xor\n");
+                goto choose3;
+            avbryt:
+                break;
+            choose3:
+                Console.Write("Välj: ");
+
+                switch (Console.ReadLine())
+                {
+                    case "1":
+                        mathOp = Addera;
+                        break;
+                    case "+":
+                        mathOp = Addera;
+                        break;
+                    case "2":
+                        mathOp = Subtrahera;
+                        break;
+                    case "-":
+                        mathOp = Subtrahera;
+                        break;
+                    case "3":
+                        mathOp = Multiplicera;
+                        break;
+                    case "*":
+                        mathOp = Multiplicera;
+                        break;
+                    case "4":
+                        mathOp = Dividera;
+                        break;
+                    case "/":
+                        mathOp = Dividera;
+                        break;
+                    case "a":
+                        goto avbryt;
+                    case "A":
+                        goto avbryt;
+                    default:
+                        Console.WriteLine("Felaktig inmatning! Försök igen.");
+                        goto choose3;
+                       // break;
+                }
+
+                Console.WriteLine("Det blir: {0}", mathOp(num1, num2));
+            }
 
         }
 
-        public static int Add(int _num1, int _num2)
+        public static double Addera(double _num1, double _num2)
         {
             return _num1 + _num2;
         }
 
-        public static int Subtract(int _num1, int _num2)
+        public static double Subtrahera(double _num1, double _num2)
         {
             return _num1 - _num2;
         }
 
-        public static int Multiplicate(int _num1, int _num2)
+        public static double Multiplicera(double _num1, double _num2)
         {
             return _num1 * _num2;
         }
 
-        public static int Divide(int _num1, int _num2)
+        public static double Dividera(double _num1, double _num2)
         {
             return _num1 / _num2;
-        }
-
-        public static int Xor(int _num1, int _num2)
-        {
-            return _num1 ^ _num2;
         }
     }
 }

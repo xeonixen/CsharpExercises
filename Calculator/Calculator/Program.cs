@@ -9,7 +9,7 @@ namespace Calulator
         {
             MathOp mathOp;
             double num1, num2;
-            string inmatning;
+            string input;
             while (true)
             {
 
@@ -17,11 +17,11 @@ namespace Calulator
 
             choose1:
                 Console.Write("Tal 1: ");
-                inmatning = Console.ReadLine();
-                inmatning = inmatning.ToLower();
-                if (!Double.TryParse(inmatning, out num1))
+                input = Console.ReadLine();
+                input = input.ToLower();
+                if (!Double.TryParse(input, out num1))
                 {
-                    if (String.Compare(inmatning, "a") == 0) break;
+                    if (String.Compare(input, "a") == 0) break;
                     else
                     {
                         Console.WriteLine("Felaktig inmatning, försök igen.");
@@ -31,10 +31,10 @@ namespace Calulator
 
             choose2:
                 Console.Write("Tal 2: ");
-                inmatning = Console.ReadLine();
-                if (!Double.TryParse(inmatning, out num2))
+                input = Console.ReadLine();
+                if (!Double.TryParse(input, out num2))
                 {
-                    if (String.Compare(inmatning, "a") == 0) break;
+                    if (String.Compare(input, "a") == 0) break;
                     else
                     {
                         Console.WriteLine("Felaktig inmatning, försök igen.");

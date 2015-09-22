@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculatorWPF", "CalculatorWPF\CalculatorWPF.csproj", "{F373220E-3C83-48FB-B7FA-E53851B57CE7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication3", "ConsoleApplication3\ConsoleApplication3.csproj", "{31A7E6AD-DB32-420B-B7CC-A2F710D36A85}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marcus", "..\ConsoleApplication3\Marcus\Marcus.csproj", "{8DA77CC5-195D-4BE7-A526-1644077AAD82}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marcus", "Marcus\Marcus.csproj", "{8DA77CC5-195D-4BE7-A526-1644077AAD82}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,10 +13,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F373220E-3C83-48FB-B7FA-E53851B57CE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F373220E-3C83-48FB-B7FA-E53851B57CE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F373220E-3C83-48FB-B7FA-E53851B57CE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F373220E-3C83-48FB-B7FA-E53851B57CE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31A7E6AD-DB32-420B-B7CC-A2F710D36A85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31A7E6AD-DB32-420B-B7CC-A2F710D36A85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31A7E6AD-DB32-420B-B7CC-A2F710D36A85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31A7E6AD-DB32-420B-B7CC-A2F710D36A85}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8DA77CC5-195D-4BE7-A526-1644077AAD82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8DA77CC5-195D-4BE7-A526-1644077AAD82}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8DA77CC5-195D-4BE7-A526-1644077AAD82}.Release|Any CPU.ActiveCfg = Release|Any CPU

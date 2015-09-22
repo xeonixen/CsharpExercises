@@ -5,9 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CalculatorWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="50" Margin="10,10,0,0" TextWrapping="Wrap" Text="0.0" VerticalAlignment="Top" Width="321" TextChanged="textBox_TextChanged"/>
+        Title="MainWindow" Height="413" Width="432">
+    <Grid Margin="0,0,2,0">
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="50" Margin="10,10,-126,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="181" FontSize="30"/>
+        <Grid HorizontalAlignment="Left" Height="317" Margin="0,65,0,0" VerticalAlignment="Top" Width="422">
+            <Button x:Name="button1" Content="1" HorizontalAlignment="Left" Margin="5,115,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
+            <Button x:Name="button2" Content="2" HorizontalAlignment="Left" Margin="60,115,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
+            <Button x:Name="button3" Content="3" HorizontalAlignment="Left" Margin="115,115,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
+            <Button x:Name="button4" Content="4" HorizontalAlignment="Left" Margin="5,60,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
+            <Button x:Name="button5" Content="5" HorizontalAlignment="Left" Margin="60,60,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
+            <Button x:Name="button6" Content="6" HorizontalAlignment="Left" Margin="115,60,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
+            <Button x:Name="button7" Content="7" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
+            <Button x:Name="button8" Content="8" HorizontalAlignment="Left" Margin="60,5,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
+            <Button x:Name="button9" Content="9" HorizontalAlignment="Left" Margin="115,5,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
+            <Button x:Name="buttonSign" Content="+/-" HorizontalAlignment="Left" Margin="5,170,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
+            <Button x:Name="button0" Content="0" HorizontalAlignment="Left" Margin="60,170,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
+            <Button x:Name="buttonComma" Content="," HorizontalAlignment="Left" Margin="115,170,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
+            <Button x:Name="buttonEqual" Content="=" HorizontalAlignment="Left" Margin="200,170,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
+            <Button x:Name="buttonAdd" Content="+" HorizontalAlignment="Left" Margin="200,115,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
+            <Button x:Name="buttonSubtract" Content="-" HorizontalAlignment="Left" Margin="200,60,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
+            <Button x:Name="buttonMultiply" Content="*" HorizontalAlignment="Left" Margin="200,5,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
+            <Button x:Name="buttonDivide" Content="/" HorizontalAlignment="Left" Margin="255,5,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
+            <Button x:Name="buttonDelete" Content="Del" HorizontalAlignment="Left" Margin="310,5,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
+        </Grid>
 
     </Grid>
 </Window>

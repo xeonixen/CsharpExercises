@@ -5,29 +5,81 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CalculatorWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="413" Width="432">
+        Title="Calculator" Height="335" Width="383" ResizeMode="CanMinimize" Foreground="Black" SizeToContent="WidthAndHeight" AllowsTransparency="True" WindowStyle="None" MouseLeftButtonDown="Window_MouseLeftButtonDown" KeyDown="Window_KeyDown">
+    <Window.Background>
+        <ImageBrush ImageSource="calc-back.png"/>
+    </Window.Background>
+    <Window.Resources>
+        <Style x:Key="MarcusButton" TargetType="Button">
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <ImageBrush ImageSource="button.png"/>
+                </Setter.Value>
+                
+            </Setter>
+            <Style.Triggers>
+                
+                
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                
+
+                                <Border BorderBrush="#FF00B9FF">
+                                    
+                                    <TextBlock Text="{TemplateBinding Content}" TextAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+                    
+                    
+               
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Window.Effect>
+        <DropShadowEffect/>
+    </Window.Effect>
+    <Window.OpacityMask>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="White" Offset="0"/>
+            <GradientStop Color="Black" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.OpacityMask>
     <Grid Margin="0,0,2,0">
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="50" Margin="10,10,-126,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="181" FontSize="30"/>
-        <Grid HorizontalAlignment="Left" Height="317" Margin="0,65,0,0" VerticalAlignment="Top" Width="422">
-            <Button x:Name="button1" Content="1" HorizontalAlignment="Left" Margin="5,115,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
-            <Button x:Name="button2" Content="2" HorizontalAlignment="Left" Margin="60,115,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
-            <Button x:Name="button3" Content="3" HorizontalAlignment="Left" Margin="115,115,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
-            <Button x:Name="button4" Content="4" HorizontalAlignment="Left" Margin="5,60,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
-            <Button x:Name="button5" Content="5" HorizontalAlignment="Left" Margin="60,60,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
-            <Button x:Name="button6" Content="6" HorizontalAlignment="Left" Margin="115,60,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
-            <Button x:Name="button7" Content="7" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
-            <Button x:Name="button8" Content="8" HorizontalAlignment="Left" Margin="60,5,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
-            <Button x:Name="button9" Content="9" HorizontalAlignment="Left" Margin="115,5,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
-            <Button x:Name="buttonSign" Content="+/-" HorizontalAlignment="Left" Margin="5,170,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
-            <Button x:Name="button0" Content="0" HorizontalAlignment="Left" Margin="60,170,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
-            <Button x:Name="buttonComma" Content="," HorizontalAlignment="Left" Margin="115,170,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
-            <Button x:Name="buttonEqual" Content="=" HorizontalAlignment="Left" Margin="200,170,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
-            <Button x:Name="buttonAdd" Content="+" HorizontalAlignment="Left" Margin="200,115,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
-            <Button x:Name="buttonSubtract" Content="-" HorizontalAlignment="Left" Margin="200,60,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
-            <Button x:Name="buttonMultiply" Content="*" HorizontalAlignment="Left" Margin="200,5,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
-            <Button x:Name="buttonDivide" Content="/" HorizontalAlignment="Left" Margin="255,5,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
-            <Button x:Name="buttonDelete" Content="Del" HorizontalAlignment="Left" Margin="310,5,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="50" Margin="25,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="319" FontSize="30" IsEnabled="False" Grid.ColumnSpan="2"/>
+        <Grid HorizontalAlignment="Left" Height="226" Margin="0,65,0,0" VerticalAlignment="Top" Width="365" Grid.ColumnSpan="2">
+
+            <Button x:Name="button1" Style="{StaticResource MarcusButton}" Content="1" HorizontalAlignment="Left" Margin="5,115,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
+            <Button x:Name="button2" Style="{StaticResource MarcusButton}" Content="2" HorizontalAlignment="Left" Margin="60,115,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
+            <Button x:Name="button3" Style="{StaticResource MarcusButton}" Content="3" HorizontalAlignment="Left" Margin="115,115,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
+            <Button x:Name="button4" Style="{StaticResource MarcusButton}" Content="4" HorizontalAlignment="Left" Margin="5,60,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
+            <Button x:Name="button5" Style="{StaticResource MarcusButton}" Content="5" HorizontalAlignment="Left" Margin="60,60,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
+            <Button x:Name="button6" Style="{StaticResource MarcusButton}" Content="6" HorizontalAlignment="Left" Margin="115,60,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
+            <Button x:Name="button7" Style="{StaticResource MarcusButton}" Content="7" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
+            <Button x:Name="button8" Style="{StaticResource MarcusButton}" Content="8" HorizontalAlignment="Left" Margin="60,5,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
+            <Button x:Name="button9" Style="{StaticResource MarcusButton}" Content="9" HorizontalAlignment="Left" Margin="115,5,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
+            <Button x:Name="buttonSign" Style="{StaticResource MarcusButton}" Content="+/-" HorizontalAlignment="Left" Margin="5,170,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
+            <Button x:Name="button0" Style="{StaticResource MarcusButton}" Content="0" HorizontalAlignment="Left" Margin="60,170,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
+            <Button x:Name="buttonComma" Style="{StaticResource MarcusButton}" Content="," HorizontalAlignment="Left" Margin="115,170,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
+            <Button x:Name="buttonEqual" Style="{StaticResource MarcusButton}" Content="=" HorizontalAlignment="Left" Margin="200,170,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
+            <Button x:Name="buttonAdd" Style="{StaticResource MarcusButton}" Content="+" HorizontalAlignment="Left" Margin="200,115,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
+            <Button x:Name="buttonSubtract" Style="{StaticResource MarcusButton}" Content="-" HorizontalAlignment="Left" Margin="200,60,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
+            <Button x:Name="buttonMultiply" Style="{StaticResource MarcusButton}" Content="*" HorizontalAlignment="Left" Margin="200,5,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
+            <Button x:Name="buttonDivide" Style="{StaticResource MarcusButton}" Content="/" HorizontalAlignment="Left" Margin="255,5,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
+            <Button x:Name="buttonSqrt" Style="{StaticResource MarcusButton}" Content="Sqrt" HorizontalAlignment="Left" Margin="255,60,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="20" Click="button_Click"/>
+            <Button x:Name="buttonSquare" Style="{StaticResource MarcusButton}" Content="Square" HorizontalAlignment="Left" Margin="255,115,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="15" Click="button_Click"/>
+            <Button x:Name="buttonDelete" Style="{StaticResource MarcusButton}" Content="Del" HorizontalAlignment="Left" Margin="310,5,0,0" VerticalAlignment="Top" Width="50" Height="50" FontSize="30" Click="button_Click"/>
         </Grid>
 
     </Grid>
+ 
 </Window>

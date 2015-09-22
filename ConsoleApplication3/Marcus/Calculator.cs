@@ -1,31 +1,52 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Marcus
 {
     public class Calculator
     {
         public Decimal number1=0, number2=0;
-        public Decimal Add(Decimal a, Decimal b)
+        public Decimal Add()
         {
-            return a + b;
+            return number1 + number2;
         }
-        public Decimal Subtract(Decimal a, Decimal b)
+        public Decimal Subtract()
         {
-            return a - b;
+            return number1 - number2;
         }
-        public Decimal Divide(Decimal a, Decimal b)
+        public Decimal Divide()
         {
-            if (b != 0)
-                return a / b;
+            if (number2 != 0)
+                return number1 / number2;
             else return 0;
         }
-        public Decimal Multiply(Decimal a, Decimal b)
+        public Decimal Multiply()
         {
-            return a * b;
+            try
+            {
+                return number1 * number2;
+            }
+            catch (Exception)
+            {
+
+                return 0;
+            }
+        }
+        public Decimal Sqrt()
+        {
+            return Convert.ToDecimal(Math.Sqrt(Convert.ToDouble(number1)));
+        }
+        public Decimal Square()
+        {
+            try
+            {
+                return number1 * number1;
+            }
+            catch (Exception)
+            {
+
+                return 0;
+            }
+            
         }
     }
 }

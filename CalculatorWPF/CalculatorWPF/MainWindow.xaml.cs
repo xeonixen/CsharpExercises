@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Marcus;
 
 namespace CalculatorWPF
@@ -21,13 +11,13 @@ namespace CalculatorWPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        public delegate Decimal MathOperation(Decimal num1, Decimal num2);
+        public delegate Decimal MathOperation();
         public MathOperation mathOp;
         public Calculator calc = new Calculator();
         public MainWindow()
         {
             InitializeComponent();
-            textBox.Focus();
+            
         }
 
         private void CheckText()
@@ -114,24 +104,89 @@ namespace CalculatorWPF
                     textBox.Text = "0";
                     mathOp = calc.Multiply;
                     break;
+                case "buttonSqrt":
+                    calc.number1 = GetNumber();
+                    mathOp = calc.Sqrt;
+                    textBox.Text = mathOp().ToString();
+                    break;
                 case "buttonSign":
                     textBox.Text = (-GetNumber()).ToString();
                     break;
-
+                case "buttonSquare":
+                    calc.number1 = GetNumber();
+                    mathOp = calc.Square;
+                    textBox.Text = mathOp().ToString();
+                    break;
                 case "buttonEqual":
                     if (mathOp != null)
                     {
                         calc.number2 = GetNumber();
-                        textBox.Text= mathOp(calc.number1, calc.number2).ToString();
+                        textBox.Text= mathOp().ToString();
                     }
-
                     break;
                 case "buttonDelete":
-                    //textBox.Text += ",";
                     if (textBox.Text.Length > 0) textBox.Text = textBox.Text.Remove(textBox.Text.Length - 1, 1);
                     if (textBox.Text.Length == 0) textBox.Text = "0";
                     break;
             }
+        }
+
+        private void Window_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
+
+        private void Window_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            
+            KeyValueSerializer keyValue = new KeyValueSerializer();
+            string sKey = keyValue.ConvertToString(e.Key, null);
+            Int32 input;
+            bool parseResult=Int32.TryParse(sKey,out input);
+            if(parseResult && (input<=9 && input>=0))
+            {
+                textBox.Text += sKey;
+                CheckText();
+            }
+
+            switch (e.Key)
+            {
+                case Key.Escape:
+                    Close();
+                    break;
+                case Key.OemPlus:
+                    calc.number1 = GetNumber();
+                    mathOp = calc.Add;
+                    textBox.Text = "0";
+                    break;
+                case Key.OemMinus:
+                    calc.number1 = GetNumber();
+                    mathOp = calc.Subtract;
+                    textBox.Text = "0";
+                    break;
+                case Key.OemQuestion:
+                    calc.number1 = GetNumber();
+                    mathOp = calc.Multiply;
+                    textBox.Text = "0";
+                    break;
+                case Key.D7:
+                    if (Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift))
+                    {
+                        calc.number1 = GetNumber();
+                        mathOp = calc.Divide;
+                        textBox.Text = "0";
+                    }
+                    break;
+
+                case Key.Enter:
+                    if (mathOp != null)
+                    {
+                        calc.number2 = GetNumber();
+                        textBox.Text = mathOp().ToString();
+                    }
+                    break;
+            }
+  
         }
     }
 

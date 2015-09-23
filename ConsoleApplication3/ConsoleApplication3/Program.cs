@@ -14,9 +14,9 @@ namespace ConsoleApplication3
         {
             Calculator calc = new Calculator();
             ShowText();
-            var number1 = MConsole.ReadDecimal();
-            var number2 = MConsole.ReadDecimal();
-            Console.WriteLine(calc.Add(number1,number2));
+            calc.number1 = MConsole.ReadDecimal();
+            calc.number2 = MConsole.ReadDecimal();
+            Console.WriteLine(calc.Add());
             Console.ReadLine();
         }
         static void ShowText()
